@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/Normalize.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Charm|Thasadith" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        input:focus{
+             outline: none;
+         }
+
+         div:focus{
+             outline: none;
+         }
+
+         .fbPlacHoll{
+             display: none;
+         }
+         body {
+            height: 100%;
+            font-family: 'Charm', cursive;
+            font-size: 12px;
+        }
+        #divNote{
+            height: auto;
+            width: 100%;
+        }
+
+        .row{
+                margin-top: 20px;
+               margin-bottom: 20px;
+               padding-right: 0px;
+             }
+             input{
+                 background-color: transparent;
+             }
+
+       #drag{
+           cursor:  all-scroll;
+       }  
+       
+       #rawAdding1{
+           padding-bottom: 0px;
+            padding-top: 0px;
+     }
+	 
+	 
+
+
+    </style>
+</head>
+
+<body>
+
+    <div id="frame">
+        <!--THIS DIV TAG FOR TRANSPORTATION OF DIV-->
+        <div class='setDivMain row' style=' height: auto;width: 180px'>
+
+        </div>
+
+        <div class="card" id="bord" style="width:60%; border-radius: 13px">
+            <div class="card-body" style="padding-top: 5px; padding-bottom: 5px">
+                <input type="text" id="title" class="title" placeholder="Take a note...">
+            </div>
+
+            <div class='fbPlacHoll' id="fbPlacHoll" style="position:absolute; color:#80868b; top:30px;left:20px"><span>
+                    Take a note...</span></div>
+            <div class="card-body fbody " id="fbody" style=' padding-top: 1.0px; padding-bottom: 1.0px;  color:#80868b !important;border-color: transparent'>
+
+                <!-- <div class="card" id='conBorder'>
+                    <div class="card-body " id='rawAdding1'>
+                        <div class='row rw'>
+                            <div class='col-1'> <i class="fas fa-ellipsis-v"></i> </div>
+                            <div class='col-1'> <input type="checkbox" name="d" value="c"></div>
+                            <div class='col-9'> <input type='text' style='width:90%;border-color: transparent'></div>
+                            <div class='col-1'> <i id='times' class="fas fa-times"></i></div>
+                        </div>
+                    </div>
+                    <div id='addraw'><span><i class="fas fa-plus" id='pressADD'></i></span> <span> Add New Column</span></div>
+                </div> -->
+
+
+            </div>
+            <div class="card-body ffoot" id='ffoot' style="position: relative; padding-top: 1.0px; padding-bottom: 1.0px;">
+                <div style="padding-left: 120px">
+                    <ul class="nav">
+                        <li id="col " class="nav-item dropDownC"><a class="nav-link " href="#"><i style='color: #80868b  !important'
+                                    class="fas fa-palette"></i></a>
+                            <div clss='colP' id='colP' style="position: absolute; top:-75px; background-color: white">
+                                <ul class='row'>
+                                    <li id='circle' style="background-color: rgb(247, 245, 244)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(242, 139, 130)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(251, 188, 4);" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(251, 244, 117);" class='c'></li>
+                                </ul>
+                                <ul class='row'>
+                                    <li id='circle' style="background-color: rgb(204, 255, 144)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(167, 255, 255)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(203, 240, 248)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(215, 174, 251)" class='c'></li>
+                                </ul>
+                                <ul class='row'>
+                                    <li id='circle' id='circle' style="background-color: rgb(253, 207, 232)" class='c'></li>
+                                    <li id='circle' id='circle' style="background-color: rgb(230, 201, 168)" class='c'></li>
+                                    <li id='circle' id='circle' style="background-color: rgb(174, 203, 250)" class='c'></li>
+                                    <li id='circle' id='circle' style="background-color: rgb(232, 234, 237)" class='c'></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id='col' class="nav-item  dotLine"><a class="nav-link " href="#"><i style='color: #80868b  !important'
+                                    class="fas fa-ellipsis-v"> </i></a>
+                            <!-- <ul id='type' style="position: absolute; top:35px; left: 2px;">
+                                            <li > <button type="button" class="btn btn-light" id='note'>Note</button></li>
+                                            <li ><button type="button" class="btn btn-light" id='cBox' >Check box</button></li>
+                                        </ul> -->
+                            <div id='type' style="margin-top: -2px; left:180px" class="dropdown-menu">
+                                <a class="dropdown-item btn btn-light" id='hide' href="#">Hide Check Boxes</a>
+                                <a class="dropdown-item btn btn-light" id='show' href="#">Show Check-boxes</a>
+                                <a class="dropdown-item btn btn-light" id='delete' href="#">Delete</a>
+                                <!-- <a class="dropdown-item btn btn-light" id='note' href="#"> </a> -->
+                            </div>
+                        </li>
+                        <li id='col' class="nav-item"><a class="nav-link " href="#"><span id='closeBT'>close </span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    <div class="card text-center fram">
+        <div class="grid" style="position: relative; height: 0px;">
+            <div class="grid take" style="position: relative; height: 0px;">
+                <!-- <div class="newDiw" style="height: 200px; background-color: brown"></div>-->
+            </div>
+
+        </div>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://unpkg.com/packery@2/dist/packery.pkgd.js"></script>
+        <script src="js/packery.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>  -->
+        <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script> -->
+        <script>
+
+
+            // var html = `<div class='row' style="border-top: 1px solid rgb(128, 134, 139); border-bottom: 1px solid rgb(128, 134, 139); " >
+            //                            <div class='col-1' id='cbox'><i class="fas fa-ellipsis-v"></i>  </div>
+            //                            <div class='col-1' id='cbox'> <input type="checkbox"  name="d${index}" value="c${index}" > </div>
+            //                            <div class='col-9' id='divmin' contenteditable="true"> ${text} </div>
+            //                            <div class='col-1' id='xbox'> <i id='times' class="fas fa-times"></i> </div>
+            //                       </div>`;
+
+
+            var bc = null;
+            var changeList = [];
+            var htmlNote = `<div id="divNote"  contenteditable="true" style="hight:10px" >  Text here  </div>`;
+            var rawADD = `<div class='row rw'>
+                                        <div class='col-1'>  <i id="drag" class="fas fa-ellipsis-v"></i> </div> 
+                                        <div class='col-1 cS'>  <input type="checkbox" id="chB" name="d" value="c"  ></div> 
+                                        <div class='col-8 '>  <input type='text' id='txtFI' style='width:90%;border-color:transparent;background-color:${bc}' placeholder="Take a note..."></div> 
+                                        <div class='col-1'>   <i id='times' class="fas fa-times" ></i></div> 
+                        </div>  `;
+
+            var htmlSort = `  <div class="card-body " id='rawAdding1'>${rawADD} </div>
+                        <div id='addraw'><span><i class="fas fa-plus" id='pressADD'></i></span> <span> Add New Column</span></div>`;
+
+
+
+            var footer = `<div style="padding-left: 0px; position:relative">
+                    <ul class="nav">
+                        <li id="col " class="nav-item dropDownC"><a class="nav-link " href="#"><i style='color: #80868b  !important'
+                                    class="fas fa-palette"></i></a>
+                            <div clss='colP' id='colP' style="position: absolute; top:155px !important; background-color: white; ">
+                                <ul class='row'>
+                                    <li id='circle' style="background-color: rgb(247, 245, 244)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(242, 139, 130)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(251, 188, 4);" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(251, 244, 117);" class='c'></li>
+                                </ul>
+                                <ul class='row'>
+                                    <li id='circle' style="background-color: rgb(204, 255, 144)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(167, 255, 255)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(203, 240, 248)" class='c'></li>
+                                    <li id='circle' style="background-color: rgb(215, 174, 251)" class='c'></li>
+                                </ul>
+                                <ul class='row'>
+                                    <li id='circle' id='circle' style="background-color: rgb(253, 207, 232)" class='c'></li>
+                                    <li id='circle' id='circle' style="background-color: rgb(230, 201, 168)" class='c'></li>
+                                    <li id='circle' id='circle' style="background-color: rgb(174, 203, 250)" class='c'></li>
+                                    <li id='circle' id='circle' style="background-color: rgb(232, 234, 237)" class='c'></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li id='col' class="nav-item  dotLine"><a class="nav-link " href="#"><i style='color: #80868b  !important'
+                                    class="fas fa-ellipsis-v"> </i></a>
+                            <!-- <ul id='type' style="position: absolute; top:35px; left: 2px;">
+                                            <li > <button type="button" class="btn btn-light" id='note'>Note</button></li>
+                                            <li ><button type="button" class="btn btn-light" id='cBox' >Check box</button></li>
+                                        </ul> -->
+                            <div id='type' style="margin-top: -2px; left:180px" class="dropdown-menu">
+                                <a class="dropdown-item btn btn-light" id='hide' href="#">Hide Check Boxes</a>
+                                <a class="dropdown-item btn btn-light" id='show' href="#">Show Check-boxes</a>
+                                <a class="dropdown-item btn btn-light" id='delete' href="#">Delete</a>
+                                <!-- <a class="dropdown-item btn btn-light" id='note' href="#"> </a> -->
+                            </div>
+                        </li>
+                        <li id='col' class="nav-item"><a class="nav-link " href="#"><span id='closeBT'>close </span></a>
+                        </li>
+                    </ul>
+                </div>`;
+
+
+
+
+
+
+            //title click contain show
+            $('#title').click(function () {
+
+                $('#ffoot').show();
+                $('#fbody').show();
+
+                $('#title').attr('placeholder', 'Title');
+
+                if (!$('#divNote').text()) {
+                    $('#fbPlacHoll').show();
+                }
+                if ($('#fbody').children.length == 0) {
+                    $('#fbody').append(htmlNote);
+                }
+            });
+
+
+
+            //starting button hide
+            $(document).ready(function () {
+
+                $("#hide").hide();
+                $("#delete").hide();
+
+            })
+
+            //color pack show
+
+            $('.dropDownC').mouseover(function () {
+
+                $('#colP').show();
+            });
+            //color pack hide
+            $('.dropDownC').mouseout(function () {
+                $('#colP').hide();
+            });
+
+
+
+            //color change function
+            $('#colP').find('.c').click(function () {
+                $('#boText').attr('placeholder', 'Take a note...')
+                bc = $(this).css('background-color');
+                console.log(bc)
+                $('#bord').css('background-color', bc);
+                $('input').css('background-color', bc);
+                $('#rawAdding1').css('background-color', bc);
+                $('#addraw').css('background-color', bc);
+                $('#conBorder').css('border-color', bc);
+            })
+
+            //three dot lin hide button show
+            $('.dotLine').mouseover(function () {
+
+                $('#type').show();
+            })
+            //three dot lin  show button hide
+            $('.dotLine').mouseout(function () {
+                $('#type').hide();
+            })
+
+            var num = 0;
+
+            //button event
+            var subdiv = null;
+            var holder = [];
+            $('#show').click(function () {
+                $('#fbC').show();
+                $("#hide").show();
+                $('#show').hide();
+
+                if ($('#divNote').children().length > 0) {
+                    $('#divNote').children().each(function (i) {
+                        console.log("ch" + i);
+                        holder[i] = $($('#divNote').children()[i]).text();
+                    })
+                }
+
+                jQuery.each(holder, function (int, valT) {
+                    console.log(int + "  " + holder[int])
+                })
+
+
+                console.log($('#divNote').text());
+                if (!$('#divNote').text().trim()) {
+                    console.log("if");
+                    $('#fbody').html(htmlSort);
+
+                } else {
+                    console.log("else");
+                    $('#fbody').html('');
+                    $('#fbody').html(` <div class="card-body " id='rawAdding1'></div>
+                        <div id='addraw'><span><i class="fas fa-plus" id='pressADD'></i></span> <span> Add New Column</span></div>`);
+                    jQuery.each(holder, function (int, valT) {
+                        $('#rawAdding1').append(rawADD).find('#txtFI');
+
+                    }) //  $('#rawAdding1').find('#txtFI').val(valT);
+                    // console.log("bcvvbc"+$("#rawAdding1").children().length);
+                    jQuery.each(holder, function (int, valT) {
+                        $($('#rawAdding1').children()[int]).find('#txtFI').val(valT);
+
+
+                    })
+                    holder.length = 0;
+                    //  $('#times').off('click');
+                }
+
+
+
+
+                $('#pressADD').click(function () {
+                    // $("#rawAdding1").sortable();
+                    $('#rawAdding1').append(rawADD);
+
+                    //Delete raw after adding
+                    $('#rawAdding1').children().children().find('#times').click(function () {
+
+                        $(this).fadeOut(500, function () {
+                            $(this).parent().parent().remove();
+                        })
+                    })
+                })
+
+                //Delete raw Converted
+
+                $('#rawAdding1').children().children().find('#times').click(function () {
+
+                    $(this).fadeOut(500, function () {
+                        $(this).parent().parent().remove();
+                    })
+                })
+
+
+
+
+
+                $(function () {
+
+                    $("#rawAdding1").sortable();
+                });
+
+
+
+            })
+
+
+            var converToNote = [];
+            //button event
+            $("#hide").click(function () {
+                $("#hide").hide();
+                $('#show').show();
+                $('#rawAdding1').children().each(function (intN) {
+                    converToNote[intN] = $($('#rawAdding1').children()[intN]).find('#txtFI').val();
+                })
+
+                $('#fbody').html(htmlNote);
+                $('#fbody').children().text('');
+                jQuery.each(converToNote, function (intN, valN) {
+                    $('#fbody').children().append(`<div>${valN}</div>`);
+                    console.log("magula" + intN + " :" + converToNote[intN])
+                })
+                converToNote.length = 0;
+
+            })
+
+            //content writer
+            $('#fbody').click(function () {
+                $('#fbPlacHoll').hide();
+                //  $('#fbody').attr('contenteditable', true)
+                $('#divNote').select();
+            })
+
+            $('#fbPlacHoll').click(function () {
+                $(this).remove();
+                $('#fbody').html(htmlNote);
+            })
+
+            //itteration of setField
+
+
+
+            // $('#pressADD').click(function () {
+            //     // $("#rawAdding1").sortable();
+            //     $('#rawAdding1').append(rawADD);
+            //           alert('abc')
+            //     $(function () {
+            //         console.log($("#rawAdding1").children().length);
+            //         // $(".mm").disableSelection();
+
+            //     });
+
+
+            // })
+
+
+            $(function () {
+                console.log($("#rawAdding1").children().length);
+                $("#rawAdding1").sortable();
+            });
+
+            function deleteRow() {
+                $('#times').off('click')
+                $('#times').click(function () {
+                    var c = $("#rawAdding1").children().find(this).parent().parent().find('td:nth-child(3)').val();
+                    alert('hjgjhgjhgjhg' + c)
+                })
+            }
+
+
+            var tit = null;
+
+
+
+            $('#closeBT').click(function () {
+                var tit = $('#title').val();
+
+                if ($('#fbody').children().length == 1) {
+
+                    if (!$('#divNote').text().trim()) {
+                        console.log('empty')
+                    } else {
+                        console.log($('#divNote').text().trim() == 'Text here')
+
+                        if ($('#divNote').text().trim() == 'Text here') {
+                            console.log('not any input')
+                        } else {
+
+                            $('.fram').children().children().append('<div class="newDiw" style="background-color:' + bc + '; width:200px">' +
+                                '  <div class="card-header">' + tit + '</div>' +
+                                ' <div class="card-body contSet"> ' + $('#divNote').html() +
+                                ' </div>' +
+                                ' <div class="card-footer text-muted" style="padding-left:0px"></div>' +
+                                ' </div>');
+
+                                draggy();
+                        }
+
+                    }
+                } else if ($('#fbody').children().length == 2) {
+                    var divs = [];
+
+                    $('#rawAdding1').children().each(function (i) {
+                        var te = $($('#rawAdding1').children()[i]).find('#txtFI').val();
+                        var cb = $($('#rawAdding1').children()[i]).find('.cS').html();
+
+                        divs[i] = `<div class="dg col-1" ></div> <div class='col-1' style='margin-left:0px; margin-right:0px;'>${cb}</div> <div class='col-7'>${te}</div> `;
+                        console.log("array" + divs[i])
+                        $('.setDivMain ').append(divs[i]);
+                    })
+                    divs.length = 0;
+
+
+
+
+                    $('.fram').children().children().append('<div class="newDiw " style="background-color:' + bc + '; width:200px">' +
+                        '  <div class="card-header">' + tit + '</div>' +
+                        ' <div class="card-body contSet row"> ' + $('.setDivMain').html() +
+                        ' </div>' +
+                        ' <div class="card-footer text-muted" style="padding-left:0px"></div>' +
+                        ' </div>');
+
+                        draggy();
+                    $('.setDivMain').html('')
+                       
+                }
+
+                
+                $('#title').val('')
+                $("#hide").hide();
+                $('#show').show();
+                $('#fbody').parent().css('background-color', "#ffff")
+                $('#fbody').parent().find('input').css('background-color', "#ffff")
+                $('#fbody').hide();
+                $('#ffoot').hide();
+
+                $('#rawAdding1').children().remove();
+                $('#fbody').html(htmlNote);
+              
+                
+            })
+
+
+
+
+function draggy(){
+    var items = $('.grid').packery({
+                itemSelector: '.newDiw',
+                columnWidth: 20
+            });
+
+
+            // make all items draggable
+            var $items = $('.grid').find('.newDiw').draggable();
+            // bind drag events to Packery
+            $('.grid').packery('bindUIDraggableEvents', $items);
+}
+           
+
+
+        </script>
+
+</body>
+
+</html>

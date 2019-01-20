@@ -1,0 +1,144 @@
+*{
+  box-sizing: border-box;
+}
+
+
+#frame{
+  position: relative;
+  top:20%;
+  left: 15%;
+  width: 70%;
+  padding: 30px;
+  margin-top: 30px;
+  height: auto;
+}
+
+#bord{
+  left: 50px;
+  width: 60%;
+  box-shadow: 2px 2px 2px 2px rgb(172, 170, 170);
+  align-content: center;
+   #title{
+     border-color: transparent;
+     color: #80868b;
+   }
+}
+
+.popUp{
+  height: 150px;
+}
+
+.tirow{
+  border-color: transparent;
+  padding-bottom: 22px;
+  padding-left: 22px;
+  width: 75%;
+}
+
+#closeBT{
+  color: #80868b;
+}
+
+i:hover{
+  cursor: pointer;
+}
+
+ul{
+    list-style: none;
+}
+
+#circle{
+  height: 20px;
+  width:20px;
+  border: 0.5px solid #80868b;
+  border-radius: 50%;
+  margin: 2px;
+}
+
+#circle:hover{
+  border:1px solid #343536;
+}
+#col a{
+  color: #80868b  !important;
+}
+
+#colP{
+  border:1px solid black;
+  width: 120px;
+  position: absolute;
+   ul{
+     padding-left: 2px;
+     margin-left: 5px;
+     margin-top:1px;
+     margin-bottom: 4px;
+   }
+}
+
+
+#colP,#type{
+  display: none;
+}
+
+#colp:hover{cursor: pointer;}
+
+// .dropDownC{
+//   position: absolute;
+// }
+
+.dropDownC:hover #colP{
+   display: block;
+}
+
+.ffoot,.fbody,.fbC{
+  display: none;
+}
+
+#note{
+   
+}
+
+input:focus{
+  outline: none !important;
+  // border-color: transparent !important;
+}
+
+
+
+input:focus {
+  outline: 0px solid transparent;
+}
+
+.grid {
+  background: #DDD;
+  max-width: 1200px;
+}
+
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.take:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.newDiw {
+  float: left;
+  width: auto;
+  height: auto;
+  background: cornflowerblue;
+  border: 2px solid hsla(0, 0%, 0%, 0.5);
+ // margin: 20px;
+}
+
+.newDiw:hover {
+  border-color: hsla(0, 0%, 100%, 0.5);
+  cursor: move;
+}
+// dl:hover #type{
+//   display:block;
+// }
+
